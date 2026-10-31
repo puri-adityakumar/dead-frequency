@@ -1,31 +1,63 @@
 1
-00:00:00,600 --> 00:00:06,937
-Dead Frequency. A 2.5D survival horror prototype built with Canvas 2D and Next.js.
+00:00:00,630 --> 00:00:01,356
+Dead Frequency.
 
 2
-00:00:07,100 --> 00:00:11,551
-Three relays are dark. The exit gate stays sealed until all three come back.
+00:00:01,606 --> 00:00:06,217
+A 2.5D survival horror prototype in Canvas 2D and Next.js.
 
 3
-00:00:11,700 --> 00:00:17,848
-You start in reception. The HUD shows integrity, stamina, threat, and relay pips.
+00:00:07,130 --> 00:00:08,203
+Three relays are dark.
 
 4
-00:00:18,000 --> 00:00:23,725
-The AI director speaks only at milestones. This build labels every scripted line as fallback.
+00:00:08,453 --> 00:00:10,517
+The exit gate stays sealed until they're back.
 
 5
-00:00:24,200 --> 00:00:29,592
-Walk, sprint, listen. The creature follows the same walls and corridors that you do.
+00:00:11,730 --> 00:00:12,618
+You start in reception.
 
 6
-00:00:30,000 --> 00:00:35,088
-The flashlight is real canvas lighting. It also makes you easier for the creature to see.
+00:00:12,868 --> 00:00:16,695
+The HUD shows integrity, stamina, threat, and relay pips.
 
 7
-00:00:37,500 --> 00:00:41,666
-Relay one online. The radio feed tags the fallback response.
+00:00:18,030 --> 00:00:20,124
+The director speaks only at milestones.
 
 8
-00:00:42,300 --> 00:00:45,751
-Pause holds the run. This demo is not a full playthrough.
+00:00:20,374 --> 00:00:23,397
+This build labels every scripted line as fallback.
+
+9
+00:00:24,230 --> 00:00:25,603
+Walk, sprint, listen.
+
+10
+00:00:25,853 --> 00:00:28,443
+The creature follows the same walls and corridors you do.
+
+11
+00:00:30,030 --> 00:00:32,031
+The flashlight is real canvas lighting.
+
+12
+00:00:32,281 --> 00:00:34,214
+It also makes you easier for the creature to see.
+
+13
+00:00:37,530 --> 00:00:38,452
+Relay one online.
+
+14
+00:00:38,702 --> 00:00:41,040
+The radio feed tags the fallback response.
+
+15
+00:00:42,330 --> 00:00:43,135
+Pause holds the run.
+
+16
+00:00:43,385 --> 00:00:44,516
+This is not a full playthrough.

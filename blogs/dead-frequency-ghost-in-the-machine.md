@@ -45,7 +45,7 @@ Open `http://localhost:3000`. Without Tinker configuration, the director badge r
 
 The 46.4-second clip shows the title, movement, flashlight, one real relay restoration, the labelled fallback radio feed, and pause. It is not a full playthrough: the other two relays, a creature encounter, death, and both endings are not shown. Those progression outcomes have simulation coverage, not video evidence.
 
-Every director request in this capture was intercepted with a scripted fallback response; no live model was called. The narration is an offline macOS `Samantha` voice. The quiet background bed is locally synthesized, not captured game audio. [English captions](assets/video/dead-frequency-demo.srt), the [transcript](assets/video/narration.txt), and [capture notes](assets/media-notes.md) are included.
+Every director request in this capture was intercepted with a scripted fallback response; no live game-director model was called. The revised narration uses Microsoft's online Edge `en-US-AndrewNeural` voice. There is no music, electronic drone, background bed, or captured game audio. The footage is unchanged, with sixteen sentence-level caption cues resynced to the new speech. [English captions](assets/video/dead-frequency-demo.srt), the [transcript](assets/video/narration.txt), and [capture notes](assets/media-notes.md) are included.
 
 | Paused | Narrow screen |
 | --- | --- |

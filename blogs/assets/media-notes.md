@@ -1,8 +1,11 @@
 # Dead Frequency media notes
 
-Status: delivered 2026-10-31. All visual media comes from the local production
-build and the game's own Canvas renderer. No remote image generation, stock
-footage, network TTS, upload, paid inference, or live model call was used.
+Status: visual media delivered 2026-10-31; narration revised 2026-11-01. All
+visual media comes from the local production build and the game's own Canvas
+renderer. Revised narration uses Microsoft's online Edge speech service. No
+remote image generation, stock footage, paid inference, or live game-director
+model call was used. This audio revision updates the repository media only;
+it is not a deployment, DEV publication, or challenge submission.
 
 ## Delivered files
 
@@ -15,11 +18,11 @@ footage, network TTS, upload, paid inference, or live model call was used.
 | `screenshots/04-fallback.png` | 2560x1600 | `Director · fallback` badge and `FALLBACK` radio entry. |
 | `screenshots/05-pause.png` | 2560x1600 | Real pause overlay opened with Escape, carrier held. |
 | `screenshots/06-mobile.png` | 1170x2532 (390x844 CSS, 3x) | Narrow-screen touch layer, stick held mid-drag, lamp and interact buttons visible. |
-| `video/dead-frequency-demo.mp4` | 46.4 s, 6,509,357 bytes | Desktop walkthrough. H.264 High, 1280x720, 25 fps, yuv420p; AAC-LC 48 kHz stereo, 192 kbps; `+faststart`. |
+| `video/dead-frequency-demo.mp4` | 46.4 s, 6,227,384 bytes | Desktop walkthrough. Unchanged H.264 High, 1280x720, 25 fps, yuv420p; replacement AAC-LC 48 kHz stereo, about 144 kbps actual (192 kbps target); `+faststart`. |
 | `video/dead-frequency-demo-poster.png` | 1280x720 PNG | Frame at 00:38.2 of the delivered MP4, with a local HTML play badge and title lockup. |
 | `video/lighting-demo.mp4` | 12.0 s, 378,283 bytes | Optional silent before/after lighting clip. H.264 1280x720, 25 fps, no audio track. Three labelled isolated renderer fixtures. Not gameplay. |
-| `video/narration.txt` | 1.3 KiB | Transcript, timestamps, voice and audio-source disclosure. |
-| `video/dead-frequency-demo.srt` | 893 B | Optional English sidecar captions. Not burned in. |
+| `video/narration.txt` | 1,529 B | Transcript, timestamps, Microsoft voice and online-service disclosure. |
+| `video/dead-frequency-demo.srt` | 1,136 B | Sixteen sentence-level English sidecar captions. Not burned in. |
 | `diagrams/architecture.png` | 1600x1000 PNG | Local HTML/CSS/SVG source map. Explicitly labelled illustrative, not a runtime trace. |
 
 The six stills are the existing media pass work and were not re-captured. The
@@ -82,8 +85,9 @@ final QA suite covers fourteen scenes and a separate directional probe.
   W/A/S/D, Shift, E, F, Escape, and pointer sweeps. No controller state was
   injected and no debug shortcut was used.
 - The recording was a 1280x720, 25 fps VP9 WebM in `test-results/capture-demo/raw/`.
-  The delivered MP4 trims the first 2.0 s of page warm-up, then encodes with
-  `libx264` CRF 20 and AAC 192 kbps.
+  The original MP4 trimmed the first 2.0 s of page warm-up and encoded with
+  `libx264` CRF 20. The audio revision copied that exact video stream and
+  replaced only the soundtrack with Microsoft speech.
 - Raw video and the local build sources stay in `test-results/`; `blogs/assets/`
   contains only the delivered files.
 
@@ -97,7 +101,9 @@ proxied to the route.
 - Director requests intercepted: 3 (`start`, `room_enter`, `relay_restored`).
 - External-origin requests attempted or blocked: 0.
 - Non-POST director requests: 0.
-- Live Tinker calls, paid inference, uploads, and network TTS: none.
+- During gameplay capture: no live Tinker calls, paid inference, uploads, or
+  network TTS. Subsequent audio generation sent only the fixed, nonpersonal
+  transcript to Microsoft's online Edge speech service.
 - The harness allows the same-origin app assets and aborts every other origin.
 
 The Tinker path remains a mocked, unexercised adapter. The video shows only the
@@ -105,16 +111,27 @@ scripted fallback path and labels it as fallback in the radio feed.
 
 ## Narration, audio, captions
 
-- Voice: macOS `say`, `Samantha` (en_US), 172 words per minute. Generated
-  offline on the capture machine. No network TTS service.
-- Eight narration lines, from 00:00.6 to about 00:45.6. Full transcript and
-  timings are in `video/narration.txt`.
-- The quiet bed is original local synthesis: pink noise and a 55 Hz sine at low
-  level. It is not game audio and contains no music or sampled third-party sound.
+- Voice: Microsoft Edge online neural TTS, `en-US-AndrewNeural`, via `edge-tts`
+  7.3.1, rate `+6%`, default pitch and volume. No fallback voice, Azure
+  credentials, or paid subscription API was used. This is online synthesis,
+  not an offline voice or live game-director inference.
+- Eight narration sections, containing sixteen sentences, remain at the
+  original scene anchors. First caption: 00:00.630; last speech cue ends at
+  00:44.516. Full transcript and anchors are in `video/narration.txt`.
+- The original macOS voice and pink-noise/55 Hz background bed were removed.
+  The current soundtrack contains speech only: no music, room tone, electronic
+  drone, synthetic bed, or captured game audio. The underlying mix is exact
+  digital silence between speech; AAC adds only very low-level coding noise.
 - `video/dead-frequency-demo.srt` is an optional sidecar caption file. Captions
-  are not burned into the picture.
-- Audio check: mean -16.2 dB, peak -0.5 dB, no clipped samples in the delivered
-  AAC track.
+  are not burned into the picture. Sixteen sentence-level cues use decoded
+  speech edges, rather than the old voice's timings.
+- Audio check: -16.22 LUFS integrated loudness, -2.00 dBFS decoded peak,
+  -2.0 dBTP true peak, zero clipped samples, and gap peak -90.3 dBFS in the
+  delivered AAC track. These are automated measurements, not listening approval.
+- Reproduction: `scripts/narrate-demo.py` requires explicit `--yes` before
+  sending the fixed transcript online. See the root README for dependencies
+  and the command. It verifies packet and frame hashes before replacing the
+  demo; raw speech and `report.json` remain in ignored `test-results/narration/`.
 
 ## Verification performed
 
@@ -136,13 +153,20 @@ scripted fallback path and labels it as fallback in the radio feed.
   app, test, README, or article code.
 - Parent review confirmed all nine delivered PNG dimensions, both video
   durations, H.264/AAC in the main demo, no audio track in the lighting clip,
-  and eight ordered caption cues within the 46.4-second runtime. All delivered
+  and the original eight caption cues within the 46.4-second runtime. All delivered
   stills and sampled video frames were reviewed for visible credentials,
   personal paths, and browser profile UI; none were found. This was not an
   every-frame audit or a listening test of the narration.
 - `npm run test:blog` passes with fourteen local asset references after the
   final article integration. Both capture/check scripts pass `node --check`,
   and `git diff --check` passes. No app code changed during this final review.
+- Audio-revision verification: 46.400 seconds and 1,160 frames are preserved.
+  Video packet SHA-256 remains
+  `390d19c654d927d0b2d839c92d4e13978eb3c5e61d2cd89e92a0ce63c1ff9588`;
+  decoded frame SHA-256 also matches. Poster and lighting-video hashes are
+  unchanged. Sixteen caption cues are ordered and end within the video. There
+  was no listening test. No app source changed, so app tests and build were
+  not rerun for this soundtrack-only revision.
 
 ## Limitations and remaining issues
 
@@ -163,4 +187,5 @@ scripted fallback path and labels it as fallback in the radio feed.
 - The article and `blogs/README.md` are parent-owned and still use relative
   `assets/...` paths. DEV may need the media uploaded or rewritten to absolute
   raw URLs.
-- No commit, push, deploy, or publish was performed.
+- No deployment, DEV publication, or challenge submission was performed for
+  this audio revision.

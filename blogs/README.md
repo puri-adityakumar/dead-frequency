@@ -28,15 +28,16 @@ The reviewed draft is about 2,100 words, including frontmatter.
 | `assets/screenshots/06-mobile.png` | Narrow-screen touch controls | Delivered, 1170x2532 |
 | `assets/video/dead-frequency-demo.mp4` | Local narrated demo | Delivered, 46.4 s, 1280x720, H.264/AAC |
 | `assets/video/dead-frequency-demo-poster.png` | Video poster | Delivered, 1280x720 |
-| `assets/video/narration.txt` | Narration transcript and disclosure | Delivered, offline macOS Samantha voice |
-| `assets/video/dead-frequency-demo.srt` | English sidecar captions | Delivered, eight timed cues |
+| `assets/video/narration.txt` | Narration transcript and disclosure | Delivered, Microsoft Edge Andrew Neural voice |
+| `assets/video/dead-frequency-demo.srt` | English sidecar captions | Delivered, sixteen sentence-level cues |
 | `assets/video/lighting-demo.mp4` | Silent isolated-fixture comparison | Delivered, 12 s, 1280x720, not gameplay |
 | `assets/diagrams/architecture.png` | Illustrative source map | Delivered, 1600x1000, not a runtime trace |
 | `assets/media-notes.md` | Capture method and coverage limits | Delivered |
 
 The gameplay clip uses real controls and restores one relay. Director requests
-are mocked as fallback. Narration is offline speech synthesis; the quiet
-background bed is local synthesis, not game audio. No full playthrough,
+are mocked as fallback. Narration uses Microsoft Edge's online
+`en-US-AndrewNeural` voice. There is no music, drone, synthetic background bed,
+or captured game audio. The footage is unchanged by this audio revision. No full playthrough,
 creature contact, death, ending, or mobile recording is claimed.
 
 ## Placeholder and fact checklist

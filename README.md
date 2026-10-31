@@ -120,7 +120,8 @@ playthrough.
   by Raincheck's screenshot-led writeup format, with original prose.
 - [Narrated gameplay demo](blogs/assets/video/dead-frequency-demo.mp4), 46.4
   seconds, real controls and one restored relay. Director responses are mocked
-  as fallback. Offline narration and a synthesized bed replace game audio.
+  as fallback. Microsoft Edge `en-US-AndrewNeural` narration replaces game
+  audio, with no music, electronic drone, or background bed.
 - [Lighting comparison](blogs/assets/video/lighting-demo.mp4), 12 seconds,
   silent labelled renderer fixtures, not gameplay.
 - [Screenshots and media manifest](blogs/README.md), with capture notes,
@@ -139,6 +140,23 @@ uploaded assets. The clips do not show a full playthrough, death, or endings.
 [Narration transcript](blogs/assets/video/narration.txt) ·
 [Capture notes and limitations](blogs/assets/media-notes.md)
 
+### Regenerate the narration (optional)
+
+The delivered video already contains speech. Playback needs no Python or TTS
+service. To regenerate it, install Python 3.12+, `uv`, and FFmpeg/ffprobe, then:
+
+```sh
+uv venv --python 3.12 .venv
+uv pip install --python .venv/bin/python edge-tts==7.3.1
+.venv/bin/python scripts/narrate-demo.py --voice en-US-AndrewNeural --yes
+```
+
+This optional command sends the fixed, nonpersonal narration text to Microsoft's
+online Edge speech service. It is not offline speech, live game inference, or
+an Azure subscription API. It replaces only the demo soundtrack, preserves the
+encoded video stream, and rewrites captions from the synthesized speech timings.
+Raw speech and verification reports stay in ignored `test-results/narration/`.
+
 ## Project map
 
 | Path | Contents |
@@ -150,7 +168,7 @@ uploaded assets. The clips do not show a full playthrough, death, or endings.
 | `src/lib/director/` | Validation, policy, limits, optional Tinker adapter, and fallback |
 | `src/shared/contracts.ts` | Engine, UI, and director types and units |
 | `tests/` | 56 unit and integration tests |
-| `scripts/` | Browser smoke, lighting checks, blog validation, and media capture |
+| `scripts/` | Browser smoke, lighting checks, blog validation, media capture, and optional Microsoft narration |
 | `blogs/` | Complete article draft, six screenshots, cover, diagram, recordings, captions, and transcript |
 | `docs/` | [QA](docs/QA.md), [Tinker setup](docs/TINKER.md), and [implementation plan](docs/IMPLEMENTATION_PLAN.md) |
 | `render.yaml` | Optional deployment blueprint, not an active deployment |
@@ -200,6 +218,11 @@ links, included the completed blog/media, and excluded ignored capture scratch
 files from TypeScript checks. The typecheck command generates Next.js route
 types so it also works before the first build. This packaging pass did not
 change gameplay.
+Audio revision dated **2026-11-01**: replaced the original macOS voice and
+synthetic background bed with Microsoft Andrew Neural speech only. Footage,
+duration, poster, and the silent lighting comparison are unchanged; sixteen
+sentence-level caption cues follow the new speech timings. This revision
+updates the repository media, not a deployment or DEV publication.
 The challenge deadline is October 31, 2026, 11:59 PM PDT (November 1, 12:29 PM
 IST); any changes after that cutoff must be disclosed rather than presented as
 part of a previously submitted build.

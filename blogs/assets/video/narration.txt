@@ -1,17 +1,19 @@
 Dead Frequency: demo narration
 Delivered video: dead-frequency-demo.mp4 (46.4 s, 1280x720, 25 fps, H.264/AAC)
-Voice: macOS say, Samantha (en_US), 172 words per minute, generated offline.
-No network TTS service was used. The low room tone is local pink noise plus a 55 Hz sine, not game audio.
+Voice: Microsoft Edge neural TTS, en-US-AndrewNeural (en-US), rate +6%, generated online.
+Warning: every synthesis run sends this nonpersonal narration text to Microsoft's Edge speech service.
+No background music, room tone, or synthetic bed was mixed; gaps are digital silence.
 Timing is relative to the delivered MP4. The final ~7.9 s is the real pause overlay; the simulation is paused, so those pixels are still by design.
+Captions: 16 sentence-level cues in dead-frequency-demo.srt, timed from the synthesized speech.
 
 TIMECODE     TRANSCRIPT
-00:00.600      Dead Frequency. A 2.5D survival horror prototype built with Canvas 2D and Next.js.
-00:07.100      Three relays are dark. The exit gate stays sealed until all three come back.
+00:00.600      Dead Frequency. A 2.5D survival horror prototype in Canvas 2D and Next.js.
+00:07.100      Three relays are dark. The exit gate stays sealed until they're back.
 00:11.700      You start in reception. The HUD shows integrity, stamina, threat, and relay pips.
-00:18.000      The AI director speaks only at milestones. This build labels every scripted line as fallback.
-00:24.200      Walk, sprint, listen. The creature follows the same walls and corridors that you do.
+00:18.000      The director speaks only at milestones. This build labels every scripted line as fallback.
+00:24.200      Walk, sprint, listen. The creature follows the same walls and corridors you do.
 00:30.000      The flashlight is real canvas lighting. It also makes you easier for the creature to see.
 00:37.500      Relay one online. The radio feed tags the fallback response.
-00:42.300      Pause holds the run. This demo is not a full playthrough.
+00:42.300      Pause holds the run. This is not a full playthrough.
 
 Coverage note: this is a demo walkthrough, not a full playthrough. It shows one of three relays, the scripted fallback line, and the pause overlay.
