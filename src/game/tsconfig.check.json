@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["esnext", "dom"],
+    "strict": true,
+    "noEmit": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "types": ["node"],
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "skipLibCheck": true
+  },
+  "include": [
+    "rng.ts",
+    "nav.ts",
+    "map.ts",
+    "sim.ts",
+    "render.ts",
+    "input.ts",
+    "controller.ts",
+    "index.ts",
+    "../shared/contracts.ts",
+    "../tests/game.test.ts"
+  ]
+}

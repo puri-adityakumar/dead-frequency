@@ -1,0 +1,31 @@
+1
+00:00:00,600 --> 00:00:06,937
+Dead Frequency. A 2.5D survival horror prototype built with Canvas 2D and Next.js.
+
+2
+00:00:07,100 --> 00:00:11,551
+Three relays are dark. The exit gate stays sealed until all three come back.
+
+3
+00:00:11,700 --> 00:00:17,848
+You start in reception. The HUD shows integrity, stamina, threat, and relay pips.
+
+4
+00:00:18,000 --> 00:00:23,725
+The AI director speaks only at milestones. This build labels every scripted line as fallback.
+
+5
+00:00:24,200 --> 00:00:29,592
+Walk, sprint, listen. The creature follows the same walls and corridors that you do.
+
+6
+00:00:30,000 --> 00:00:35,088
+The flashlight is real canvas lighting. It also makes you easier for the creature to see.
+
+7
+00:00:37,500 --> 00:00:41,666
+Relay one online. The radio feed tags the fallback response.
+
+8
+00:00:42,300 --> 00:00:45,751
+Pause holds the run. This demo is not a full playthrough.

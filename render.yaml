@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: dead-frequency
+    runtime: node
+    buildCommand: >-
+      npm ci --include=dev && npm run build &&
+      mkdir -p .next/standalone/.next &&
+      cp -R .next/static .next/standalone/.next/static
+    startCommand: HOSTNAME=0.0.0.0 node .next/standalone/server.js
+    healthCheckPath: /
+    envVars:
+      - key: NODE_VERSION
+        value: "24"
+      - key: NODE_ENV
+        value: production

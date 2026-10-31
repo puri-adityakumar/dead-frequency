@@ -5,12 +5,15 @@ export type DirectorAction = 'whisper' | 'lights_flicker' | 'false_alarm' | 'hun
 
 export interface DirectorState {
   seed: number;
+  /** Seconds of simulation time, frozen outside the playing phase. */
   elapsed: number;
   room: RoomId;
   visitedRooms: RoomId[];
   relays: number;
+  /** Percentage, 0..100. The engine converts its internal health fraction. */
   health: number;
   flashlight: boolean;
+  /** Fraction, 0..1. */
   threat: number;
   milestone: Milestone;
   recentMessages: string[];
@@ -32,12 +35,16 @@ export interface DirectorResponse {
 export interface GameSnapshot {
   phase: 'ready' | 'playing' | 'paused' | 'dead' | 'choice' | 'won';
   seed: number;
+  /** Seconds of simulation time. */
   elapsed: number;
+  /** Fraction, 0..1, unlike DirectorState.health. */
   health: number;
   relays: number;
   room: RoomId;
   flashlight: boolean;
+  /** Fraction, 0..1. */
   stamina: number;
+  /** Fraction, 0..1. */
   threat: number;
   interaction: string | null;
   ending: 'release' | 'shutdown' | null;
